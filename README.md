@@ -108,5 +108,5 @@ Contributions are welcome! Please feel free to submit a pull request.
 - **Details and Expansion**: You might want to expand the **Installation** section to include more specific details about setting up the environment or handling potential errors during setup.
 <br>
 <br>
-----
+
 # Thank You!
