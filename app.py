@@ -1,5 +1,5 @@
-from flask import Flask, request, jsonify
 import os
+from flask import Flask, request, jsonify
 from pdf_extractor import extract_text_from_pdf
 from qa_model import load_model, answer_query
 
@@ -13,7 +13,10 @@ pdf_text = ""
 def upload_file():
     global pdf_text
     pdf = request.files['file']
-    pdf_path = os.path.join("uploads", pdf.filename)
+    upload_folder = 'uploads'
+    if not os.path.exists(upload_folder):
+        os.makedirs(upload_folder)  # Create the directory if it does not exist
+    pdf_path = os.path.join(upload_folder, pdf.filename)
     pdf.save(pdf_path)
     pdf_text = extract_text_from_pdf(pdf_path)
     return jsonify({"message": "PDF uploaded and processed successfully"})
